@@ -1,6 +1,6 @@
 package tryout;
 
-import user.Person;
+import user.Owner;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,13 +25,13 @@ public class Main {
 
       }
 
-      List<Person> persons = new ArrayList<Person>();
-      for (int i = 1; i < 11; i++) {
-         persons.add(new Person("100" + i, "Person" + i, "", "person" + i + "@mail.com", "100" + i, "0800" + i));
-      }
-      for (int i = 0; i < persons.size(); i++) {
-         System.out.println("Person: " + persons.get(i).getName() + " ---> ID: " + persons.get(i).getId());
-      }
+//      List<Owner> owners = new ArrayList<Owner>();
+//      for (int i = 1; i < 11; i++) {
+//         owners.add(new Owner("100" + i, "Owner" + i, "", "person" + i + "@mail.com", "100" + i, "0800" + i));
+//      }
+//      for (int i = 0; i < owners.size(); i++) {
+//         System.out.println("Owner: " + owners.get(i).getName() + " ---> ID: " + owners.get(i).getId());
+//      }
 
       Statement stmt = null;
       try {
@@ -41,21 +41,21 @@ public class Main {
          stmt = conn.createStatement();
 
          String sql = "INSERT INTO users " +
-                 "VALUES ('Diego', 'Mancini', 'diegonfx@hotmail.com','Perrito1','5491154645662', '38931523')";
+                 "VALUES ('Nicole', 'Ghirlanda', 'nicole_ghirlanda@hotmail.com','Perrito1','549113598893', '38891542')";
          stmt.executeUpdate(sql);
          String insert = "INSERT INTO users values(?,?,?,?,?,?)";
          PreparedStatement ps = conn.prepareStatement(insert);
 
-         for (int i = 0; i < persons.size(); i++) {
-            ps.setString(1,persons.get(i).getName());
-            ps.setString(2,persons.get(i).getSurname());
-            ps.setString(3,persons.get(i).getEmail());
-            ps.setString(4,persons.get(i).getPassword());
-            ps.setString(5,persons.get(i).getPhone());
-            ps.setString(6,persons.get(i).getId());
-            ps.addBatch();
-         }
-         ps.executeBatch();
+//         for (int i = 0; i < owners.size(); i++) {
+//            ps.setString(1, owners.get(i).getName());
+//            ps.setString(2, owners.get(i).getSurname());
+//            ps.setString(3, owners.get(i).getEmail());
+//            ps.setString(4, owners.get(i).getPassword());
+//            ps.setString(5, owners.get(i).getPhone());
+//            ps.setString(6, owners.get(i).getId());
+//            ps.addBatch();
+//         }
+//         ps.executeBatch();
 
          System.out.println("Inserted records into the table...");
 
